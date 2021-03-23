@@ -5,6 +5,7 @@ import Characters from "./Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
 import CharacterDetails from "./CharacterDetails";
+import FavCharacters from "./FavCharacters";
 function App() {
   return (
     <Router>
@@ -22,6 +23,9 @@ function App() {
             </li>
             <li>
               <Link to="/episodes">Episodes</Link>
+            </li>
+            <li>
+              <Link to="/favcharacters">FavCharacters</Link>
             </li>
           </ul>
         </nav>
