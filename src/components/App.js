@@ -4,6 +4,7 @@ import Home from "./Home";
 import Characters from "./Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
+import CharacterDetails from "./CharacterDetails";
 function App() {
   return (
     <Router>
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/episode">
             <Episodes />
+          </Route>
+          <Route path="/characterdetails">
+            <CharacterDetails />
           </Route>
           <Route exact path="/">
             <Home />
