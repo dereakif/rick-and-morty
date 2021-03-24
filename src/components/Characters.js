@@ -9,7 +9,7 @@ import PopUpCloseBtn from "./styledComponents/PopUp/PopUpCloseBtn";
 import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
 import PopUpBody from "./styledComponents/PopUp/PopUpBody";
 import PopUpImg from "./styledComponents/PopUp/PopUpImg";
-import $ from "jquery";
+import $, { event } from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -33,9 +33,9 @@ const FavBtn = styled.div`
   width: 30px;
   height: 30px;
   background-color: red;
-  position: relative;
-
-  right: 30px;
+  position: absolute;
+  bottom: 284px;
+  left: 280px;
   cursor: pointer;
   border-radius: 1rem;
 `;
@@ -47,17 +47,28 @@ const SeeFavBtn = styled.div`
 `;
 const CharImg = styled.img`
   border-radius: 1rem;
-  height: 200px;
-  width: auto;
+  height: auto;
+  width: max-content;
+  margin: 10px;
 `;
 const CharName = styled.div`
+  position: absolute;
+  text-align: center;
+  background-color: #72a917;
+  border-radius: 1rem;
+  color: white;
+  line-height: 1.6;
+  font-size: 24px;
+  bottom: 0px;
+  width: 100%;
+`;
+const Card = styled.div`
   position: relative;
-  right: 30px;
+  margin: 10px;
 `;
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
-  const [checkList, setCheckList] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
@@ -73,6 +84,7 @@ const Characters = () => {
   const closePopUp = () => {
     $(".popUp").css("display", "none");
     $(".fav-btn").css("z-index", "1");
+    $(".char-card").css("z-index", "1");
   };
   $(".popUp").click((event) => {
     $.inArray("popUp", event.target.classList) > -1 && closePopUp();
@@ -83,6 +95,7 @@ const Characters = () => {
   const handlePopUp = () => {
     $(".popUp").css("display", "unset");
     $(".fav-btn").css("z-index", "-1");
+    $(".char-card").css("z-index", "-1");
   };
 
   const resetFavBtn = () => {
@@ -105,7 +118,7 @@ const Characters = () => {
     // isFavedBtn();
   };
 
-  const handleFav = (obj) => {
+  const handleFav = (obj, event) => {
     //selected buttons stays black!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     if (!favoritesList.includes(obj)) {
@@ -128,7 +141,16 @@ const Characters = () => {
       });
     } */
   };
-
+  /*   $(document).ready(function () {
+    $(".char-card").hover(
+      function () {
+        $(this).addClass("hoveredOver");
+      },
+      function () {
+        $(this).removeClass("hoveredOver");
+      }
+    );
+  }); */
   //favoritesList.map((item)=>)
   return (
     <div className="characters">
@@ -158,20 +180,23 @@ const Characters = () => {
       <Main>
         {characters.length > 0 &&
           characters.map((character, i) => (
-            <>
-              <Link to={{ pathname: "/characterdetails", state: character }}>
+            <Card className="char-card">
+              <Link
+                className="char-name"
+                to={{ pathname: "/characterdetails", state: character }}
+              >
                 <CharImg
                   key={i}
                   src={character && character.image}
                   alt="character-img"
                 ></CharImg>
               </Link>
-              <CharName>{character.name}</CharName>
+              <CharName className="quick-view">{character.name}</CharName>
               <FavBtn
                 className="fav-btn"
-                onClick={() => handleFav(character)}
+                onClick={() => handleFav(character, event)}
               ></FavBtn>
-            </>
+            </Card>
           ))}
       </Main>
     </div>
