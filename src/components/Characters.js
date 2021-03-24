@@ -8,9 +8,20 @@ import PopUpHeader from "./styledComponents/PopUp/PopUpHeader";
 import PopUpCloseBtn from "./styledComponents/PopUp/PopUpCloseBtn";
 import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
 import PopUpBody from "./styledComponents/PopUp/PopUpBody";
+import PopUpImg from "./styledComponents/PopUp/PopUpImg";
 import $ from "jquery";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
+const slickSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 const Main = styled.div`
   margin: 20px auto 50px auto;
   width: 100%;
@@ -39,6 +50,10 @@ const CharImg = styled.img`
   height: 200px;
   width: auto;
 `;
+const CharName = styled.div`
+  position: relative;
+  right: 30px;
+`;
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
@@ -46,9 +61,12 @@ const Characters = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
-    resetFavBtn();
-    isFavedBtn();
-  }, [pageNumber, favoritesList]);
+
+    console.log(favoritesList, "useefetct");
+
+    // resetFavBtn();
+    // isFavedBtn();
+  }, [pageNumber, favoritesList.length]);
 
   const characters = useSelector((state) => state.characterReducer.data);
 
@@ -68,7 +86,7 @@ const Characters = () => {
   };
 
   const resetFavBtn = () => {
-    $(".fav-btn").css("background-color", "red");
+    $(".fav-btn").attr("style", "");
   };
   const isFavedBtn = () => {
     favoritesList.map((item) =>
@@ -77,28 +95,38 @@ const Characters = () => {
   };
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
-    resetFavBtn();
-    isFavedBtn();
+    //resetFavBtn();
+    //isFavedBtn();
   };
 
   const handleNext = () => {
     pageNumber >= 34 ? setPageNumber(34) : setPageNumber(pageNumber + 1);
-    resetFavBtn();
-    isFavedBtn();
+    //resetFavBtn();
+    // isFavedBtn();
   };
 
   const handleFav = (obj) => {
     //selected buttons stays black!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if (favoritesList.length == 0) {
-      setFavoritesList([obj]);
-    } else if (!favoritesList.includes(obj)) {
+
+    if (!favoritesList.includes(obj)) {
+      console.log(obj);
       setFavoritesList([...favoritesList, obj]);
-      $(`#${"charId" + obj.id}`).css("background-color", "black");
+      console.log(favoritesList, "handfav ici");
     } else {
-      setFavoritesList(favoritesList.map((char) => char.id != obj.id && char));
-      $(`#${"charId" + obj.id}`).css("background-color", "red");
+      setFavoritesList(
+        favoritesList
+          .map((item) => item != obj && item)
+          .filter((item) => typeof item !== "boolean")
+      );
+      favoritesList.length == 0 && setFavoritesList([]);
     }
-    console.log(favoritesList.length);
+    /* if (!favoritesList.includes(obj)) {
+      setFavoritesList([...favoritesList, obj]);
+    } else {
+      setFavoritesList((favoritesList) => {
+        favoritesList.map((char) => char.id != obj.id && char);
+      });
+    } */
   };
 
   //favoritesList.map((item)=>)
@@ -112,9 +140,15 @@ const Characters = () => {
             <PopUpCloseBtn className="closeBtn">&times;</PopUpCloseBtn>
           </PopUpHeader>
           <PopUpBody>
-            <ul>
-              {favoritesList && favoritesList.map((item) => <p>{item.name}</p>)}
-            </ul>
+            <Slider {...slickSettings}>
+              {favoritesList &&
+                favoritesList.map((item) => (
+                  <>
+                    <PopUpImg src={item.image}></PopUpImg>
+                    {item.name}
+                  </>
+                ))}
+            </Slider>
           </PopUpBody>
         </PopUpContent>
       </PopUp>
@@ -132,8 +166,8 @@ const Characters = () => {
                   alt="character-img"
                 ></CharImg>
               </Link>
+              <CharName>{character.name}</CharName>
               <FavBtn
-                id={"charId" + character.id}
                 className="fav-btn"
                 onClick={() => handleFav(character)}
               ></FavBtn>
