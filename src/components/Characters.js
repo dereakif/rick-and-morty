@@ -10,6 +10,10 @@ import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
 import PopUpBody from "./styledComponents/PopUp/PopUpBody";
 import PopUpImg from "./styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "./styledComponents/PopUp/PopUpCharInfo";
+import Table from "./styledComponents/Table/Table";
+import TableHead from "./styledComponents/Table/TableHead";
+import TableData from "./styledComponents/Table/TableData";
+import CharStatus from "./styledComponents/CharStatus";
 import $, { event } from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -162,7 +166,7 @@ const Characters = () => {
       <PopUp className="popUp">
         <PopUpContent>
           <PopUpHeader>
-            <PopUpHeaderTitle>Favorite Characters</PopUpHeaderTitle>
+            <PopUpHeaderTitle>My Favorite Characters</PopUpHeaderTitle>
 
             <PopUpCloseBtn className="closeBtn">&times;</PopUpCloseBtn>
           </PopUpHeader>
@@ -174,11 +178,34 @@ const Characters = () => {
                     <PopUpImg src={item.image} />
                     <PopUpCharInfo>
                       {console.log(item)}
-                      <p>Name: {item.name}</p>
-                      <p>Gender: {item.gender}</p>
-                      <p>Origin: {item.origin.name}</p>
-                      <p>Species: {item.species}</p>
-                      <p>Status: {item.status}</p>
+                      <Table>
+                        <tr>
+                          <TableHead>Name</TableHead>
+                          <TableData>{item.name}</TableData>
+                        </tr>
+
+                        <tr>
+                          <TableHead>Origin</TableHead>
+                          <TableData>{item.origin.name}</TableData>
+                        </tr>
+                        <tr>
+                          <TableHead>Species</TableHead>
+                          <TableData>{item.species}</TableData>
+                        </tr>
+                        <tr>
+                          <TableHead>Status</TableHead>
+                          <TableData>
+                            {item.status}
+                            {item.status == "Alive" ? (
+                              <CharStatus
+                                style={{ "background-color": "green" }}
+                              />
+                            ) : (
+                              <CharStatus />
+                            )}
+                          </TableData>
+                        </tr>
+                      </Table>
                     </PopUpCharInfo>
                   </div>
                 ))}
