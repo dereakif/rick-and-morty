@@ -9,6 +9,7 @@ import PopUpCloseBtn from "./styledComponents/PopUp/PopUpCloseBtn";
 import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
 import PopUpBody from "./styledComponents/PopUp/PopUpBody";
 import PopUpImg from "./styledComponents/PopUp/PopUpImg";
+import PopUpCharInfo from "./styledComponents/PopUp/PopUpCharInfo";
 import $, { event } from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -18,9 +19,12 @@ import styled from "styled-components";
 const slickSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 3500,
+  cssEase: "linear",
 };
 const Main = styled.div`
   margin: 20px auto 50px auto;
@@ -66,6 +70,7 @@ const Card = styled.div`
   position: relative;
   margin: 10px;
 `;
+const SliderCard = styled.div``;
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
@@ -165,10 +170,17 @@ const Characters = () => {
             <Slider {...slickSettings}>
               {favoritesList &&
                 favoritesList.map((item) => (
-                  <>
-                    <PopUpImg src={item.image}></PopUpImg>
-                    {item.name}
-                  </>
+                  <div>
+                    <PopUpImg src={item.image} />
+                    <PopUpCharInfo>
+                      {console.log(item)}
+                      <p>Name: {item.name}</p>
+                      <p>Gender: {item.gender}</p>
+                      <p>Origin: {item.origin.name}</p>
+                      <p>Species: {item.species}</p>
+                      <p>Status: {item.status}</p>
+                    </PopUpCharInfo>
+                  </div>
                 ))}
             </Slider>
           </PopUpBody>
