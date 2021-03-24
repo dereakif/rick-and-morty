@@ -42,10 +42,13 @@ const CharImg = styled.img`
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
+  const [checkList, setCheckList] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
-  }, [pageNumber]);
+    resetFavBtn();
+    isFavedBtn();
+  }, [pageNumber, favoritesList]);
 
   const characters = useSelector((state) => state.characterReducer.data);
 
@@ -64,26 +67,41 @@ const Characters = () => {
     $(".fav-btn").css("z-index", "-1");
   };
 
+  const resetFavBtn = () => {
+    $(".fav-btn").css("background-color", "red");
+  };
+  const isFavedBtn = () => {
+    favoritesList.map((item) =>
+      $(`#${"charId" + item.id}`).css("background-color", "black")
+    );
+  };
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
+    resetFavBtn();
+    isFavedBtn();
   };
 
   const handleNext = () => {
     pageNumber >= 34 ? setPageNumber(34) : setPageNumber(pageNumber + 1);
+    resetFavBtn();
+    isFavedBtn();
   };
 
   const handleFav = (obj) => {
     //selected buttons stays black!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if (!favoritesList.includes(obj)) {
+    if (favoritesList.length == 0) {
+      setFavoritesList([obj]);
+    } else if (!favoritesList.includes(obj)) {
       setFavoritesList([...favoritesList, obj]);
       $(`#${"charId" + obj.id}`).css("background-color", "black");
     } else {
       setFavoritesList(favoritesList.map((char) => char.id != obj.id && char));
       $(`#${"charId" + obj.id}`).css("background-color", "red");
     }
-    console.log(obj);
+    console.log(favoritesList.length);
   };
 
+  //favoritesList.map((item)=>)
   return (
     <div className="characters">
       <PopUp className="popUp">
