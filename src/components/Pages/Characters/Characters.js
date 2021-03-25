@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { getCharacter } from "../../../store/actions/action";
 import { Link, useHistory } from "react-router-dom";
 import PopUpContainer from "./PopUpContainer";
-import ScrollToTop from "../../styledComponents/Characters/ScrollToTop";
-import CardContainer from "../../styledComponents/Characters/CardContainer";
-import FavBtn from "../../styledComponents/Characters/FavBtn";
-import MyFavList from "../../styledComponents/Characters/MyFavList";
-import CharImg from "../../styledComponents/Characters/CharImg";
+import ScrollToTop from "../../styledComponents/Characters/Buttons/ScrollToTop";
+import CardContainer from "../../styledComponents/Characters/Card/CardContainer";
+import FavBtn from "../../styledComponents/Characters/Buttons/FavBtn";
+import MyFavList from "../../styledComponents/Characters/Buttons/MyFavList";
+import CharImg from "../../styledComponents/Characters/Card/CharImg";
+import CharName from "../../styledComponents/Characters/Card/CharName";
+import Card from "../../styledComponents/Characters/Card/Card";
+import ButtonContainer from "../../styledComponents/Characters/Buttons/ButtonContainer";
+import PageButton from "../../styledComponents/Characters/Buttons/PageButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -17,91 +21,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import $, { event } from "jquery";
 
-import styled from "styled-components";
-
-const CharName = styled.div`
-  position: absolute;
-  text-align: center;
-  border-radius: 1rem;
-  color: white;
-  line-height: 1.6;
-  font-size: 24px;
-  bottom: 0px;
-  width: 100%;
-   {
-    background-image: linear-gradient(
-      to right,
-      #3ca55c 0%,
-      #b5ac49 51%,
-      #3ca55c 100%
-    );
-  }
-
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-
-  border-radius: 10px;
-  display: block;
-  :hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
-`;
-const Card = styled.div`
-  position: relative;
-  margin: 10px;
-  transition: all 0.3s ease;
-  :hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-`;
-const SliderCard = styled.div``;
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-const PageButton = styled.button`
-  background-color: transparent;
-  outline: none;
-  color: white;
-  border: 2px solid white;
-  border-radius: 1rem;
-  font-size: 1.5rem;
-  line-height: 1.6;
-  :hover {
-    color: black;
-    background-color: white;
-  }
-`;
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
-
     console.log(favoritesList, "useefetct");
-
-    // resetFavBtn();
-    // isFavedBtn();
   }, [pageNumber, favoritesList.length]);
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  const resetFavBtn = () => {
-    $(".fav-btn").attr("style", "");
-  };
-  const isFavedBtn = () => {
-    favoritesList.map((item) =>
-      $(`#${"charId" + item.id}`).css("background-color", "black")
-    );
-  };
   $(function () {
     $(".fav-btn").hover(
       function () {
@@ -122,16 +52,11 @@ const Characters = () => {
   };
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
-    //resetFavBtn();
-    //isFavedBtn();
   };
 
   const handleNext = () => {
     pageNumber >= 34 ? setPageNumber(34) : setPageNumber(pageNumber + 1);
-    //resetFavBtn();
-    // isFavedBtn();
   };
-  //scroll top btn
 
   const scrollToTop = () => {
     window.scroll({ top: 0, behavior: "smooth" });
@@ -190,10 +115,6 @@ const Characters = () => {
                   onClick={() => handleFav(character, event)}
                 />
               </FavBtn>
-              {/* <FavBtn
-                className="fav-btn"
-                onClick={() => handleFav(character, event)}
-              ></FavBtn> */}
             </Card>
           ))}
       </CardContainer>
