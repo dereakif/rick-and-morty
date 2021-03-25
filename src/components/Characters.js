@@ -14,8 +14,14 @@ import Table from "./styledComponents/Table/Table";
 import TableHead from "./styledComponents/Table/TableHead";
 import TableData from "./styledComponents/Table/TableData";
 import CharStatus from "./styledComponents/CharStatus";
+import PopUpInfoRow from "./styledComponents/PopUp/PopUpInfoRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faChevronLeft,
+  faChevronRight,
+  faChevronCircleUp,
+} from "@fortawesome/free-solid-svg-icons";
 import $, { event } from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -33,7 +39,8 @@ const slickSettings = {
   cssEase: "linear",
 };
 const Main = styled.div`
-  margin: 20px auto 50px auto;
+  margin: auto;
+  padding:0 100px
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -48,10 +55,16 @@ const FavBtn = styled.div`
   cursor: pointer;
 `;
 const SeeFavBtn = styled.div`
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
+  border: 2px solid white;
+  border-radius: 1rem;
+  padding: 2px 10px;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
+  :hover {
+    color: black;
+    background-color: white;
+  }
 `;
 const CharImg = styled.img`
   border-radius: 1rem;
@@ -62,13 +75,34 @@ const CharImg = styled.img`
 const CharName = styled.div`
   position: absolute;
   text-align: center;
-  background-color: #72a917;
   border-radius: 1rem;
   color: white;
   line-height: 1.6;
   font-size: 24px;
   bottom: 0px;
   width: 100%;
+   {
+    background-image: linear-gradient(
+      to right,
+      #3ca55c 0%,
+      #b5ac49 51%,
+      #3ca55c 100%
+    );
+  }
+
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+
+  border-radius: 10px;
+  display: block;
+  :hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
 `;
 const Card = styled.div`
   position: relative;
@@ -81,6 +115,23 @@ const Card = styled.div`
   }
 `;
 const SliderCard = styled.div``;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+const PageButton = styled.button`
+  background-color: transparent;
+  outline: none;
+  color: white;
+  border: 2px solid white;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  :hover {
+    color: black;
+    background-color: white;
+  }
+`;
 const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
@@ -145,7 +196,26 @@ const Characters = () => {
     //resetFavBtn();
     // isFavedBtn();
   };
+  //scroll top btn
+  const ScrollToTop = styled.div`
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin: 30px 50px;
+    background-color: transparent;
+    outline: none;
+    color: white;
 
+    font-size: 1.5rem;
+    line-height: 1.6;
+    :hover {
+      color: black;
+    }
+  `;
+  const scrollToTop = () => {
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
   const handleFav = (obj, event) => {
     //selected buttons stays black!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -197,24 +267,13 @@ const Characters = () => {
                     <PopUpImg src={item.image} />
                     <PopUpCharInfo>
                       {console.log(item)}
-                      <Table>
-                        <tr>
-                          <TableHead>Name</TableHead>
-                          <TableData>{item.name}</TableData>
-                        </tr>
-
-                        <tr>
-                          <TableHead>Origin</TableHead>
-                          <TableData>{item.origin.name}</TableData>
-                        </tr>
-                        <tr>
-                          <TableHead>Species</TableHead>
-                          <TableData>{item.species}</TableData>
-                        </tr>
-                        <tr>
-                          <TableHead>Status</TableHead>
-                          <TableData>
-                            {item.status}
+                      <>
+                        <PopUpInfoRow style={{ fontWeight: "700" }}>
+                          {item.name}
+                        </PopUpInfoRow>
+                        <PopUpInfoRow style={{ fontSize: "18px" }}>
+                          {item.species}{" "}
+                          <>
                             {item.status == "Alive" ? (
                               <CharStatus
                                 style={{ "background-color": "green" }}
@@ -222,9 +281,13 @@ const Characters = () => {
                             ) : (
                               <CharStatus />
                             )}
-                          </TableData>
-                        </tr>
-                      </Table>
+                          </>{" "}
+                          <div>{item.status}</div>
+                        </PopUpInfoRow>
+                        <PopUpInfoRow style={{ fontSize: "18px" }}>
+                          Origin-{item.origin.name}
+                        </PopUpInfoRow>
+                      </>
                     </PopUpCharInfo>
                   </div>
                 ))}
@@ -232,9 +295,15 @@ const Characters = () => {
           </PopUpBody>
         </PopUpContent>
       </PopUp>
-      <button onClick={handlePrevious}>Go Previous page</button>
-      <SeeFavBtn onClick={handlePopUp}>fav list</SeeFavBtn>
-      <button onClick={handleNext}>Go next page</button>
+      <ButtonContainer>
+        <PageButton onClick={handlePrevious}>
+          <FontAwesomeIcon icon={faChevronLeft} /> Previous page
+        </PageButton>
+        <SeeFavBtn onClick={handlePopUp}>My Fav List</SeeFavBtn>
+        <PageButton onClick={handleNext}>
+          Next page <FontAwesomeIcon icon={faChevronRight} />
+        </PageButton>
+      </ButtonContainer>
 
       <Main>
         {characters.length > 0 &&
@@ -267,6 +336,9 @@ const Characters = () => {
             </Card>
           ))}
       </Main>
+      <ScrollToTop onClick={scrollToTop}>
+        <FontAwesomeIcon icon={faChevronCircleUp} size="2x"></FontAwesomeIcon>
+      </ScrollToTop>
     </div>
   );
 };

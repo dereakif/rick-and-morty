@@ -6,7 +6,7 @@ const CharStatus = styled.div`
   border-radius: 50%;
   background-color: red;
   position: absolute;
-  bottom: 20px;
-  left: 66px;
+  bottom: 45%;
+  left: 48%;
 `;
 export default CharStatus;
