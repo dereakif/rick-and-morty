@@ -40,14 +40,12 @@ const Main = styled.div`
   justify-content: center;
 `;
 const FavBtn = styled.div`
-  width: 30px;
-  height: 30px;
-  background-color: red;
+  width: auto;
+  height: auto;
   position: absolute;
-  bottom: 284px;
-  left: 280px;
+  bottom: 278px;
+  left: 270px;
   cursor: pointer;
-  border-radius: 1rem;
 `;
 const SeeFavBtn = styled.div`
   border: 1px solid black;
@@ -75,6 +73,12 @@ const CharName = styled.div`
 const Card = styled.div`
   position: relative;
   margin: 10px;
+  transition: all 0.3s ease;
+  :hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 `;
 const SliderCard = styled.div``;
 const Characters = () => {
@@ -117,6 +121,19 @@ const Characters = () => {
       $(`#${"charId" + item.id}`).css("background-color", "black")
     );
   };
+  $(function () {
+    $(".fav-btn").hover(
+      function () {
+        $(this).css("color", "#fa1e0e");
+      },
+      function () {
+        $(this).css("color", "#e40017");
+      }
+    );
+  });
+  $(".fav-btn").click(function () {
+    $(this).css("color", "#72A917");
+  });
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
     //resetFavBtn();
@@ -165,8 +182,6 @@ const Characters = () => {
   //favoritesList.map((item)=>)
   return (
     <div className="characters">
-      <i class="fas fa-user"></i>
-      <i class="fab fa-github-square"></i>
       <PopUp className="popUp">
         <PopUpContent>
           <PopUpHeader>
@@ -220,7 +235,7 @@ const Characters = () => {
       <button onClick={handlePrevious}>Go Previous page</button>
       <SeeFavBtn onClick={handlePopUp}>fav list</SeeFavBtn>
       <button onClick={handleNext}>Go next page</button>
-      <FontAwesomeIcon color="red" size="6x" icon={faHeart} />
+
       <Main>
         {characters.length > 0 &&
           characters.map((character, i) => (
@@ -236,11 +251,19 @@ const Characters = () => {
                 ></CharImg>
               </Link>
               <CharName className="quick-view">{character.name}</CharName>
-
-              <FavBtn
+              <FavBtn>
+                <FontAwesomeIcon
+                  color="#fa1e0e"
+                  size="2x"
+                  icon={faHeart}
+                  className="fav-btn"
+                  onClick={() => handleFav(character, event)}
+                />
+              </FavBtn>
+              {/* <FavBtn
                 className="fav-btn"
                 onClick={() => handleFav(character, event)}
-              ></FavBtn>
+              ></FavBtn> */}
             </Card>
           ))}
       </Main>
