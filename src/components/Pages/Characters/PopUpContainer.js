@@ -6,11 +6,13 @@ import PopUpBody from "../../styledComponents/PopUp/PopUpBody";
 import PopUpImg from "../../styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "../../styledComponents/PopUp/PopUpCharInfo";
 import PopUpInfoRow from "../../styledComponents/PopUp/PopUpInfoRow";
+import PopUpRemove from "../../styledComponents/Characters/Buttons/PopUpRemove";
 import $ from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PopUp from "../../styledComponents/PopUp/PopUp";
+import ButtonContainer from "../../styledComponents/Characters/Buttons/ButtonContainer";
 
 const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
   const slickSettings = {
@@ -69,10 +71,12 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
                       <PopUpInfoRow style={{ fontSize: "18px" }}>
                         Origin - {item.origin.name}
                       </PopUpInfoRow>
-                      <button onClick={() => handleRemove(item.id)}>
-                        remove char
-                      </button>
-                      <button onClick={handleReset}>reset fav list</button>
+                      <ButtonContainer>
+                        <PopUpRemove onClick={() => handleRemove(item.id)}>
+                          Remove
+                        </PopUpRemove>
+                        <PopUpRemove onClick={handleReset}>Reset</PopUpRemove>
+                      </ButtonContainer>
                     </>
                   </PopUpCharInfo>
                 </div>

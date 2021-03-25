@@ -5,6 +5,6 @@ const PopUpHeader = styled.div`
   margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
-  border-radius: 1rem;
+  border-bottom: 2px solid black;
 `;
 export default PopUpHeader;
