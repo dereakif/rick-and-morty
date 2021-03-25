@@ -217,39 +217,20 @@ const Characters = () => {
     window.scroll({ top: 0, behavior: "smooth" });
   };
   const handleFav = (obj, event) => {
-    //selected buttons stays black!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    if (!favoritesList.includes(obj)) {
+    if (!favoritesList.some((item) => item.id == obj.id)) {
       console.log(obj);
       setFavoritesList([...favoritesList, obj]);
       console.log(favoritesList, "handfav ici");
     } else {
       setFavoritesList(
         favoritesList
-          .map((item) => item != obj && item)
+          .map((item) => item.id != obj.id && item)
           .filter((item) => typeof item !== "boolean")
       );
       favoritesList.length == 0 && setFavoritesList([]);
     }
-    /* if (!favoritesList.includes(obj)) {
-      setFavoritesList([...favoritesList, obj]);
-    } else {
-      setFavoritesList((favoritesList) => {
-        favoritesList.map((char) => char.id != obj.id && char);
-      });
-    } */
   };
-  /*   $(document).ready(function () {
-    $(".char-card").hover(
-      function () {
-        $(this).addClass("hoveredOver");
-      },
-      function () {
-        $(this).removeClass("hoveredOver");
-      }
-    );
-  }); */
-  //favoritesList.map((item)=>)
+
   return (
     <div className="characters">
       <PopUp className="popUp">
