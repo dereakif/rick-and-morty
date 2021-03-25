@@ -10,10 +10,6 @@ import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
 import PopUpBody from "./styledComponents/PopUp/PopUpBody";
 import PopUpImg from "./styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "./styledComponents/PopUp/PopUpCharInfo";
-import Table from "./styledComponents/Table/Table";
-import TableHead from "./styledComponents/Table/TableHead";
-import TableData from "./styledComponents/Table/TableData";
-import CharStatus from "./styledComponents/CharStatus";
 import PopUpInfoRow from "./styledComponents/PopUp/PopUpInfoRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -216,18 +212,18 @@ const Characters = () => {
   const scrollToTop = () => {
     window.scroll({ top: 0, behavior: "smooth" });
   };
-  const handleFav = (obj, event) => {
-    if (!favoritesList.some((item) => item.id == obj.id)) {
+  const handleFav = (obj) => {
+    if (!favoritesList.some((item) => item.id === obj.id)) {
       console.log(obj);
       setFavoritesList([...favoritesList, obj]);
       console.log(favoritesList, "handfav ici");
     } else {
       setFavoritesList(
         favoritesList
-          .map((item) => item.id != obj.id && item)
+          .map((item) => item.id !== obj.id && item)
           .filter((item) => typeof item !== "boolean")
       );
-      favoritesList.length == 0 && setFavoritesList([]);
+      favoritesList.length === 0 && setFavoritesList([]);
     }
   };
 
@@ -253,20 +249,12 @@ const Characters = () => {
                           {item.name}
                         </PopUpInfoRow>
                         <PopUpInfoRow style={{ fontSize: "18px" }}>
-                          {item.species}{" "}
-                          <>
-                            {item.status == "Alive" ? (
-                              <CharStatus
-                                style={{ "background-color": "green" }}
-                              />
-                            ) : (
-                              <CharStatus />
-                            )}
-                          </>{" "}
-                          <div>{item.status}</div>
+                          {item.species}
+                          {" - "}
+                          {item.status}
                         </PopUpInfoRow>
                         <PopUpInfoRow style={{ fontSize: "18px" }}>
-                          Origin-{item.origin.name}
+                          Origin - {item.origin.name}
                         </PopUpInfoRow>
                       </>
                     </PopUpCharInfo>
