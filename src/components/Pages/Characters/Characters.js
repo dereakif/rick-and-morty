@@ -136,23 +136,6 @@ const Characters = () => {
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  const closePopUp = () => {
-    $(".popUp").css("display", "none");
-    $(".fav-btn").css("z-index", "1");
-    $(".char-card").css("z-index", "1");
-  };
-  $(".popUp").click((event) => {
-    $.inArray("popUp", event.target.classList) > -1 && closePopUp();
-  });
-
-  $(".closeBtn").click(() => closePopUp());
-
-  const handlePopUp = () => {
-    $(".popUp").css("display", "unset");
-    $(".fav-btn").css("z-index", "-1");
-    $(".char-card").css("z-index", "-1");
-  };
-
   const resetFavBtn = () => {
     $(".fav-btn").attr("style", "");
   };
@@ -174,6 +157,11 @@ const Characters = () => {
   $(".fav-btn").click(function () {
     $(this).css("color", "#72A917");
   });
+  const handlePopUp = () => {
+    $(".popUp").css("display", "unset");
+    $(".fav-btn").css("z-index", "-1");
+    $(".char-card").css("z-index", "-1");
+  };
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
     //resetFavBtn();
@@ -222,7 +210,10 @@ const Characters = () => {
 
   return (
     <div className="characters">
-      <PopUpContainer favoritesList={favoritesList}></PopUpContainer>
+      <PopUpContainer
+        favoritesList={favoritesList}
+        setFavoritesList={setFavoritesList}
+      ></PopUpContainer>
       <ButtonContainer>
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page

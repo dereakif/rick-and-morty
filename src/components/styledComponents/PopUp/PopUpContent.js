@@ -4,7 +4,7 @@ const PopUpContent = styled.div`
   background-color: #fefefe;
   border-radius: 1rem;
   position: relative;
-  height: 75vh;
+  height: 65vh;
   width: 40vw;
   top: 50%;
   left: 50%;

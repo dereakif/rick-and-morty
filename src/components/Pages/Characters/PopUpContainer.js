@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import PopUp from "../../styledComponents/PopUp/PopUp";
 
-const PopUpContainer = ({ favoritesList }) => {
+const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
   const slickSettings = {
     dots: true,
     infinite: true,
@@ -23,6 +23,25 @@ const PopUpContainer = ({ favoritesList }) => {
     speed: 1000,
     autoplaySpeed: 3500,
     cssEase: "linear",
+  };
+  const closePopUp = () => {
+    $(".popUp").css("display", "none");
+    $(".fav-btn").css("z-index", "1");
+    $(".char-card").css("z-index", "1");
+  };
+  $(".popUp").click((event) => {
+    $.inArray("popUp", event.target.classList) > -1 && closePopUp();
+  });
+
+  $(".closeBtn").click(() => closePopUp());
+
+  const handleReset = () => {
+    setFavoritesList([]);
+  };
+  const handleRemove = (charId) => {
+    setFavoritesList(
+      favoritesList.map((item) => item.id !== charId && item).filter(Boolean)
+    );
   };
   return (
     <PopUp className="popUp">
@@ -52,6 +71,10 @@ const PopUpContainer = ({ favoritesList }) => {
                       <PopUpInfoRow style={{ fontSize: "18px" }}>
                         Origin - {item.origin.name}
                       </PopUpInfoRow>
+                      <button onClick={() => handleRemove(item.id)}>
+                        remove char
+                      </button>
+                      <button onClick={handleReset}>reset fav list</button>
                     </>
                   </PopUpCharInfo>
                 </div>
