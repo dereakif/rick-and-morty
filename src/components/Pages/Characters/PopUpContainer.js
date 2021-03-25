@@ -6,11 +6,10 @@ import PopUpBody from "../../styledComponents/PopUp/PopUpBody";
 import PopUpImg from "../../styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "../../styledComponents/PopUp/PopUpCharInfo";
 import PopUpInfoRow from "../../styledComponents/PopUp/PopUpInfoRow";
-import $, { event } from "jquery";
+import $ from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
 import PopUp from "../../styledComponents/PopUp/PopUp";
 
 const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
@@ -48,7 +47,7 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
       <PopUpContent>
         <PopUpHeader>
           <PopUpHeaderTitle>My Favorite Characters</PopUpHeaderTitle>
-
+          <PopUpHeaderTitle>Total: {favoritesList.length}</PopUpHeaderTitle>
           <PopUpCloseBtn className="closeBtn">&times;</PopUpCloseBtn>
         </PopUpHeader>
         <PopUpBody>
@@ -58,7 +57,6 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
                 <div>
                   <PopUpImg src={item.image} />
                   <PopUpCharInfo>
-                    {console.log(item)}
                     <>
                       <PopUpInfoRow style={{ fontWeight: "700" }}>
                         {item.name}
