@@ -1,16 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCharacter } from "../store/actions/action";
+import { getCharacter } from "../../../store/actions/action";
 import { Link, useHistory } from "react-router-dom";
-import PopUp from "./styledComponents/PopUp/PopUp";
-import PopUpContent from "./styledComponents/PopUp/PopUpContent";
-import PopUpHeader from "./styledComponents/PopUp/PopUpHeader";
-import PopUpCloseBtn from "./styledComponents/PopUp/PopUpCloseBtn";
-import PopUpHeaderTitle from "./styledComponents/PopUp/PopUpHeaderTitle";
-import PopUpBody from "./styledComponents/PopUp/PopUpBody";
-import PopUpImg from "./styledComponents/PopUp/PopUpImg";
-import PopUpCharInfo from "./styledComponents/PopUp/PopUpCharInfo";
-import PopUpInfoRow from "./styledComponents/PopUp/PopUpInfoRow";
+import PopUpContainer from "./PopUpContainer";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -229,41 +222,7 @@ const Characters = () => {
 
   return (
     <div className="characters">
-      <PopUp className="popUp">
-        <PopUpContent>
-          <PopUpHeader>
-            <PopUpHeaderTitle>My Favorite Characters</PopUpHeaderTitle>
-
-            <PopUpCloseBtn className="closeBtn">&times;</PopUpCloseBtn>
-          </PopUpHeader>
-          <PopUpBody>
-            <Slider {...slickSettings}>
-              {favoritesList &&
-                favoritesList.map((item) => (
-                  <div>
-                    <PopUpImg src={item.image} />
-                    <PopUpCharInfo>
-                      {console.log(item)}
-                      <>
-                        <PopUpInfoRow style={{ fontWeight: "700" }}>
-                          {item.name}
-                        </PopUpInfoRow>
-                        <PopUpInfoRow style={{ fontSize: "18px" }}>
-                          {item.species}
-                          {" - "}
-                          {item.status}
-                        </PopUpInfoRow>
-                        <PopUpInfoRow style={{ fontSize: "18px" }}>
-                          Origin - {item.origin.name}
-                        </PopUpInfoRow>
-                      </>
-                    </PopUpCharInfo>
-                  </div>
-                ))}
-            </Slider>
-          </PopUpBody>
-        </PopUpContent>
-      </PopUp>
+      <PopUpContainer favoritesList={favoritesList}></PopUpContainer>
       <ButtonContainer>
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
@@ -273,7 +232,6 @@ const Characters = () => {
           Next page <FontAwesomeIcon icon={faChevronRight} />
         </PageButton>
       </ButtonContainer>
-
       <Main>
         {characters.length > 0 &&
           characters.map((character, i) => (

@@ -1,7 +1,7 @@
 import "./../App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import Characters from "./Characters";
+import Home from "./Pages/Home/Home";
+import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
 import CharacterDetails from "./CharacterDetails";
