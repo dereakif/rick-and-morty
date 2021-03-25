@@ -14,6 +14,8 @@ import Table from "./styledComponents/Table/Table";
 import TableHead from "./styledComponents/Table/TableHead";
 import TableData from "./styledComponents/Table/TableData";
 import CharStatus from "./styledComponents/CharStatus";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import $, { event } from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -163,6 +165,8 @@ const Characters = () => {
   //favoritesList.map((item)=>)
   return (
     <div className="characters">
+      <i class="fas fa-user"></i>
+      <i class="fab fa-github-square"></i>
       <PopUp className="popUp">
         <PopUpContent>
           <PopUpHeader>
@@ -216,6 +220,7 @@ const Characters = () => {
       <button onClick={handlePrevious}>Go Previous page</button>
       <SeeFavBtn onClick={handlePopUp}>fav list</SeeFavBtn>
       <button onClick={handleNext}>Go next page</button>
+      <FontAwesomeIcon color="red" size="6x" icon={faHeart} />
       <Main>
         {characters.length > 0 &&
           characters.map((character, i) => (
@@ -231,6 +236,7 @@ const Characters = () => {
                 ></CharImg>
               </Link>
               <CharName className="quick-view">{character.name}</CharName>
+
               <FavBtn
                 className="fav-btn"
                 onClick={() => handleFav(character, event)}
