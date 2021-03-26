@@ -94,7 +94,7 @@ const Characters = () => {
       <CardContainer>
         {characters.length > 0 &&
           characters.map((character, i) => (
-            <Card className="char-card">
+            <Card key={i} className="char-card">
               <Link
                 className="char-name"
                 to={{ pathname: "/characterdetails", state: character }}

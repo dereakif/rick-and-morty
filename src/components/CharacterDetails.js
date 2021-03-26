@@ -1,37 +1,42 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getCharacter, getEpisode, getLocation } from "rickmortyapi"; // getCharacter()
+import { getCharacter, getEpisode, getLocation } from "rickmortyapi";
+import CharName from "./styledComponents/Characters/Card/CharName";
 import styled from "styled-components";
 const CharacterDetails = (props) => {
   const Card = styled.div`
-    border: 1px solid black;
     display: flex;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     border-radius: 1rem;
   `;
   const CharacterImg = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: auto;
     border-radius: 1rem;
   `;
   const CharacterInfo = styled.div`
-    width: 200px;
-    height: 100px;
-    border-radius: 1rem;
-    border: 1px solid black;
+    font-size: 24px;
+    color: white;
   `;
 
   const EpisodeCard = styled.p`
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 700;
+    font-size: 18px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    justify-content: space-between;
   `;
   const EpisodeContent = styled.div`
     border: 2px solid white;
+    border-radius: 1rem;
     color: white;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 5px;
   `;
 
   const EpisodeName = styled.p`
@@ -42,9 +47,15 @@ const CharacterDetails = (props) => {
     font-weight: 300;
     font-size: 8px;
   `;
-
+  const EpisodeTitle = styled.div`
+    display: flex;
+  `;
+  const Container = styled.div`
+    display: flex;
+  `;
+  const EpisodeNumber = styled.div``;
   const [charInfo, setCharInfo] = useState({});
-  const [charEpNumbers, setCharEpNumbers] = useState([]);
+  const [test, setTest] = useState([]);
   const [charEpInfo, setCharEpInfo] = useState([]);
   const location = useLocation();
 
@@ -53,33 +64,44 @@ const CharacterDetails = (props) => {
     setCharInfo(location.state);
 
     console.log("if ici");
-    let episodes = getEpisode(
+    const episodes = getEpisode(
       location.state.episode.map((item) => item.replace(/\D/g, ""))
     );
     console.log(episodes, "promise oncesi");
     /* episodes.then((value) => setCharEpInfo(value));
       console.log(charEpInfo.length > 0 && charEpInfo); */
-    episodes.then((value) => setCharEpInfo(value));
-    console.log(charEpInfo.length, "promise sonrasi");
+    // Array.isArray(episodes) ? episodes.then((value) => setCharEpInfo(value)):
+    //episodes.then((value) => setCharEpInfo(value))
+    console.log(
+      Object.keys(episodes).length === 0 && episodes.constructor === Object
+    );
+
+    if (Object.keys(episodes).length >= 0) {
+      episodes.then((value) => setCharEpInfo([...charEpInfo, value]));
+    } else if (Array.isArray(episodes)) {
+      episodes.then((value) => setCharEpInfo(value));
+    }
   }, []);
 
   return (
-    <div>
+    <Container>
       <Card>
-        <CharacterInfo>{charInfo.name}as</CharacterInfo>
         <CharacterImg src={charInfo.image}></CharacterImg>
-        <EpisodeCard>
-          {charEpInfo.length > 0 &&
-            charEpInfo.map((item) => (
-              <EpisodeContent>
-                {item.episode}
-                <EpisodeAir> Aired: {item.air_date}</EpisodeAir>
-                <EpisodeName>{item.name}</EpisodeName>
-              </EpisodeContent>
-            ))}
-        </EpisodeCard>
+        <CharName style={{ position: "static" }}>{charInfo.name}</CharName>
       </Card>
-    </div>
+      <EpisodeCard>
+        {charEpInfo.length > 0 &&
+          charEpInfo.map((item, i) => (
+            <EpisodeContent key={i}>
+              <EpisodeTitle>
+                <EpisodeNumber>{item.episode}</EpisodeNumber>
+                <EpisodeAir> Aired: {item.air_date}</EpisodeAir>
+              </EpisodeTitle>
+              <EpisodeName>{item.name}</EpisodeName>
+            </EpisodeContent>
+          ))}
+      </EpisodeCard>
+    </Container>
   );
 };
 export default CharacterDetails;

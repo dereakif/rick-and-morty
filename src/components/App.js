@@ -5,8 +5,7 @@ import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
 import CharacterDetails from "./CharacterDetails";
-import FavCharacters from "./FavCharacters";
-import MyFavList from "../components/styledComponents/Characters/Buttons/MyFavList";
+
 import styled from "styled-components";
 const Nav = styled.div`
   display: flex;
@@ -39,9 +38,6 @@ function App() {
           </Link>
           <Link to="/episodes" style={{ textDecoration: "none" }}>
             <NavItem>Episodes</NavItem>
-          </Link>
-          <Link to="/favcharacters" style={{ textDecoration: "none" }}>
-            <NavItem>FavCharacters</NavItem>
           </Link>
         </Nav>
         <Switch>
