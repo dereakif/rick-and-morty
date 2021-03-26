@@ -6,29 +6,44 @@ import Episodes from "./Episodes";
 import Locations from "./Locations";
 import CharacterDetails from "./CharacterDetails";
 import FavCharacters from "./FavCharacters";
+import MyFavList from "../components/styledComponents/Characters/Buttons/MyFavList";
+import styled from "styled-components";
+const Nav = styled.div`
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid white;
+  line-height: 2;
+`;
+const NavItem = styled.div`
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  :hover {
+    color: #fa1e0e;
+  }
+`;
 function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/characters">Characters</Link>
-            </li>
-            <li>
-              <Link to="/locations">Locations</Link>
-            </li>
-            <li>
-              <Link to="/episodes">Episodes</Link>
-            </li>
-            <li>
-              <Link to="/favcharacters">FavCharacters</Link>
-            </li>
-          </ul>
-        </nav>
+        <Nav>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <NavItem>Home</NavItem>
+          </Link>
+
+          <Link to="/characters" style={{ textDecoration: "none" }}>
+            <NavItem>Characters</NavItem>
+          </Link>
+          <Link to="/locations" style={{ textDecoration: "none" }}>
+            <NavItem>Locations</NavItem>
+          </Link>
+          <Link to="/episodes" style={{ textDecoration: "none" }}>
+            <NavItem>Episodes</NavItem>
+          </Link>
+          <Link to="/favcharacters" style={{ textDecoration: "none" }}>
+            <NavItem>FavCharacters</NavItem>
+          </Link>
+        </Nav>
         <Switch>
           <Route path="/characters">
             <Characters />
