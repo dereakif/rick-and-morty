@@ -32,7 +32,7 @@ const Characters = () => {
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  $(function () {
+  /* $(function () {
     $(".fav-btn").hover(
       function () {
         $(this).css("color", "#fa1e0e");
@@ -44,7 +44,7 @@ const Characters = () => {
   });
   $(".fav-btn").click(function () {
     $(this).css("color", "#72A917");
-  });
+  }); */
   const handlePopUp = () => {
     $(".popUp").css("display", "unset");
     $(".fav-btn").css("z-index", "-1");
@@ -75,7 +75,11 @@ const Characters = () => {
       favoritesList.length === 0 && setFavoritesList([]);
     }
   };
-
+  const isInit = (character) => {
+    let result = favoritesList.some((item) => item.id === character.id);
+    console.log(result, character, favoritesList);
+    return result;
+  };
   return (
     <>
       <PopUpContainer
@@ -108,7 +112,7 @@ const Characters = () => {
               <CharName className="quick-view">{character.name}</CharName>
               <FavBtn>
                 <FontAwesomeIcon
-                  color="#fa1e0e"
+                  color={isInit(character) ? "red" : "white"}
                   size="2x"
                   icon={faHeart}
                   className="fav-btn"
