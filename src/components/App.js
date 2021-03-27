@@ -1,12 +1,19 @@
 import "./../App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
 import CharacterDetails from "./CharacterDetails";
-
+import $ from "jquery";
 import styled from "styled-components";
+import { useState } from "react";
 const Nav = styled.div`
   display: flex;
   justify-content: space-around;
@@ -21,6 +28,7 @@ const NavItem = styled.div`
     color: #fa1e0e;
   }
 `;
+
 function App() {
   return (
     <Router>
@@ -29,7 +37,6 @@ function App() {
           <Link to="/" style={{ textDecoration: "none" }}>
             <NavItem>Home</NavItem>
           </Link>
-
           <Link to="/characters" style={{ textDecoration: "none" }}>
             <NavItem>Characters</NavItem>
           </Link>

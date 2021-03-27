@@ -9,11 +9,11 @@ const CharacterDetails = (props) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 0 0 0 20px;
     border-radius: 1rem;
   `;
   const CharacterImg = styled.img`
-    width: 300px;
+    width: 250px;
     height: auto;
     border-radius: 1rem;
   `;
@@ -35,27 +35,39 @@ const CharacterDetails = (props) => {
     color: white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 150px;
     margin: 5px;
+    padding: 0 5px;
+    height: 100px;
   `;
 
   const EpisodeName = styled.p`
-    font-weight: 300;
-    font-size: 12px;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
   `;
   const EpisodeAir = styled.p`
     font-weight: 300;
-    font-size: 8px;
+    font-size: 12px;
+    margin-left: 10px;
+    color: whitesmoke;
   `;
   const EpisodeTitle = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    border-bottom: 1px solid white;
   `;
   const Container = styled.div`
+    margin-top: 100px;
     display: flex;
+    justify-content: center;
   `;
   const EpisodeNumber = styled.div``;
   const [charInfo, setCharInfo] = useState({});
-  const [test, setTest] = useState([]);
+
   const [charEpInfo, setCharEpInfo] = useState([]);
   const location = useLocation();
 
@@ -72,15 +84,14 @@ const CharacterDetails = (props) => {
       console.log(charEpInfo.length > 0 && charEpInfo); */
     // Array.isArray(episodes) ? episodes.then((value) => setCharEpInfo(value)):
     //episodes.then((value) => setCharEpInfo(value))
-    console.log(
-      Object.keys(episodes).length === 0 && episodes.constructor === Object
-    );
+    console.log(episodes.constructor === Object);
 
-    if (Object.keys(episodes).length >= 0) {
-      episodes.then((value) => setCharEpInfo([...charEpInfo, value]));
-    } else if (Array.isArray(episodes)) {
-      episodes.then((value) => setCharEpInfo(value));
-    }
+    //Array.isArray(episodes)) {
+    episodes.then(async (value) =>
+      value.constructor === Object
+        ? setCharEpInfo([...charEpInfo, value])
+        : setCharEpInfo(value)
+    );
   }, []);
 
   return (
@@ -95,7 +106,7 @@ const CharacterDetails = (props) => {
             <EpisodeContent key={i}>
               <EpisodeTitle>
                 <EpisodeNumber>{item.episode}</EpisodeNumber>
-                <EpisodeAir> Aired: {item.air_date}</EpisodeAir>
+                <EpisodeAir> {item.air_date}</EpisodeAir>
               </EpisodeTitle>
               <EpisodeName>{item.name}</EpisodeName>
             </EpisodeContent>
