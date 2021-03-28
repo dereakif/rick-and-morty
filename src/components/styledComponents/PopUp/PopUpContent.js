@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 const PopUpContent = styled.div`
-  background-color: #fefefe;
   border-radius: 1rem;
-
-  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 85vh;
   background: rgb(235, 240, 32);
   background: linear-gradient(
     90deg,

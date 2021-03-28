@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const PopUpCharInfo = styled.div`
-  line-height: 2;
-  font-size: 24px;
+  line-height: 1.6;
   margin: auto;
   width: max-content;
   height: max-content;

@@ -5,7 +5,7 @@ const PopUpImg = styled.img`
   margin: auto;
   display: block;
   margin-bottom: 10px;
-  height: 300px;
+  height: 30vh;
   object-fit: contain;
 `;
 export default PopUpImg;

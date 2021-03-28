@@ -29,6 +29,7 @@ const customStyles = {
     right: "auto%",
     bottom: "auto",
     marginRight: "-50%",
+    backgroundColor: "transparent",
     transform: "translate(-50%, -50%)",
   },
 };
@@ -47,11 +48,11 @@ const Characters = () => {
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  const handlePopUp = () => {
+  /*   const handlePopUp = () => {
     $(".popUp").css("display", "unset");
     $(".fav-btn").css("z-index", "-1");
     $(".char-card").css("z-index", "-1");
-  };
+  }; */
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
   };
@@ -108,6 +109,8 @@ const Characters = () => {
         <PopUpContainer
           favoritesList={favoritesList}
           setFavoritesList={setFavoritesList}
+          modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen}
         ></PopUpContainer>
       </Modal>
       <ButtonContainer>
