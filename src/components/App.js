@@ -10,24 +10,10 @@ import Home from "./Pages/Home/Home";
 import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
 import Locations from "./Locations";
-import CharacterDetails from "./CharacterDetails";
-import $ from "jquery";
-import styled from "styled-components";
+import CharacterDetails from "./Pages/CharacterDetails/CharacterDetails";
+import Nav from "./styledComponents/Nav/Nav";
+import NavItem from "./styledComponents/Nav/NavItem";
 import { useState } from "react";
-const Nav = styled.div`
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 2px solid white;
-  line-height: 2;
-`;
-const NavItem = styled.div`
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  :hover {
-    color: #fa1e0e;
-  }
-`;
 
 function App() {
   const [activePage, setActivePage] = useState("");
@@ -94,6 +80,9 @@ function App() {
           </Route>
           <Route path="/characterdetails">
             <CharacterDetails />
+          </Route>
+          <Route path="*">
+            <Home />
           </Route>
           <Route exact path="/">
             <Home />

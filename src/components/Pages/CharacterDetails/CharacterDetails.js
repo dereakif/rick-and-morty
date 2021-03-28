@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCharacter, getEpisode, getLocation } from "rickmortyapi";
-import CharName from "./styledComponents/Characters/Card/CharName";
+import CharName from "../../styledComponents/Characters/Card/CharName";
 import styled from "styled-components";
 const CharacterDetails = (props) => {
   const Card = styled.div`
@@ -38,22 +38,21 @@ const CharacterDetails = (props) => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 10vw;
-    height: 15vh;
-    margin: 0.1vh 1rem 0.1vh 0;
+    width: 8rem;
+    height: 8rem;
+    margin: 0.5rem 1rem 0.5rem 0;
     padding: 5px 5px;
   `;
 
   const EpisodeName = styled.p`
     font-weight: 500;
-    font-size: 1vw;
-    margin-top: 1vh;
+    font-size: 1rem;
     line-height: 1.5;
     text-align: center;
   `;
   const EpisodeAir = styled.p`
     font-weight: 300;
-    font-size: 0.7vw;
+    font-size: 0.7rem;
     margin-left: 10px;
     font-style: italic;
     color: whitesmoke;
@@ -64,7 +63,7 @@ const CharacterDetails = (props) => {
     align-items: center;
     height: max-content;
     margin-top: 0;
-    line-height: 1.5;
+    line-height: 1;
     border-bottom: 1px solid white;
   `;
   const Container = styled.div`
@@ -74,6 +73,7 @@ const CharacterDetails = (props) => {
   `;
   const EpisodeNumber = styled.div`
     font-weight: 600;
+    font-size: 1rem;
     letter-spacing: 1px;
   `;
   const [charInfo, setCharInfo] = useState({});
