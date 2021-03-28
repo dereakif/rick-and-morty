@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HomeImg = styled.img`
-  width: 50vw;
+  width: 45vw;
   position: absolute;
   margin-left: auto;
   margin-right: auto;

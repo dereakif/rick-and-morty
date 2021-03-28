@@ -4,7 +4,7 @@ const Card = styled.div`
   position: relative;
   margin: 10px;
   height: auto;
-  width: 15vw;
+  width: 10vw;
   transition: all 0.3s ease;
   :hover {
     -webkit-transform: scale(1.1);

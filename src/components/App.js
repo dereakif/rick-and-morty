@@ -22,7 +22,7 @@ const Nav = styled.div`
 `;
 const NavItem = styled.div`
   color: white;
-  font-size: 1.6vw;
+  font-size: 1vw;
   font-weight: 700;
   :hover {
     color: #fa1e0e;
@@ -40,7 +40,11 @@ function App() {
       <div>
         <Nav>
           <Link to="/" onClick={handlePage} style={{ textDecoration: "none" }}>
-            <NavItem style={{ color: activePage == "Home" ? "red" : "white" }}>
+            <NavItem
+              style={{
+                color: activePage == "Home" ? "red" : "white",
+              }}
+            >
               Home
             </NavItem>
           </Link>

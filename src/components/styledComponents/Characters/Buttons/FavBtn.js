@@ -4,8 +4,8 @@ const FavBtn = styled.div`
   position: absolute;
 
   font-size: 1.6vw;
-  bottom: 85%;
-  left: 85%;
+  bottom: 80%;
+  left: 80%;
   cursor: pointer;
 `;
 export default FavBtn;

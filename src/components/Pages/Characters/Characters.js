@@ -31,7 +31,7 @@ const customStyles = {
     left: "50%",
     right: "auto%",
     bottom: "auto",
-    padding: "2vw",
+    padding: "0 3vw ",
     marginRight: "-50%",
     border: "none",
     backgroundColor: "transparent",

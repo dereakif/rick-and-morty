@@ -9,11 +9,12 @@ const CharacterDetails = (props) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 0 0 20px;
+    margin-top: 2rem;
+    margin-left: 2rem;
     border-radius: 1rem;
   `;
   const CharacterImg = styled.img`
-    width: 250px;
+    width: 20vw;
     height: auto;
     border-radius: 1rem;
   `;
@@ -25,8 +26,10 @@ const CharacterDetails = (props) => {
   const EpisodeCard = styled.p`
     font-weight: 700;
     font-size: 1.6vw;
+    padding: 1rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
   `;
   const EpisodeContent = styled.div`
@@ -38,7 +41,7 @@ const CharacterDetails = (props) => {
     justify-content: center;
     width: 10vw;
     height: 15vh;
-    margin: 5px;
+    margin: 0.1vh 1rem 0.1vh 0;
     padding: 5px 5px;
   `;
 
@@ -66,7 +69,7 @@ const CharacterDetails = (props) => {
     border-bottom: 1px solid white;
   `;
   const Container = styled.div`
-    margin-top: 100px;
+    margin: 0;
     display: flex;
     justify-content: center;
   `;

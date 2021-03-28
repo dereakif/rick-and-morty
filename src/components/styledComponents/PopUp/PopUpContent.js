@@ -4,7 +4,7 @@ const PopUpContent = styled.div`
   border-radius: 1rem;
   margin-bottom: 0vh;
   width: 30vw;
-  height: 85vh;
+  height: 55vh;
   background: rgb(235, 240, 32);
   background: linear-gradient(
     90deg,

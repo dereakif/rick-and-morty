@@ -60,16 +60,16 @@ const PopUpContainer = ({
                   <PopUpCharInfo>
                     <>
                       <PopUpInfoRow
-                        style={{ fontWeight: "700", fontSize: "2vw" }}
+                        style={{ fontWeight: "700", fontSize: "1vw" }}
                       >
                         {item.name}
                       </PopUpInfoRow>
-                      <PopUpInfoRow style={{ fontSize: "1.5vw" }}>
+                      <PopUpInfoRow style={{ fontSize: ".7vw" }}>
                         {item.species}
                         {" - "}
                         {item.status}
                       </PopUpInfoRow>
-                      <PopUpInfoRow style={{ fontSize: "1.3vw" }}>
+                      <PopUpInfoRow style={{ fontSize: ".7vw" }}>
                         Origin - {item.origin.name}
                       </PopUpInfoRow>
                       <ButtonContainer
@@ -79,13 +79,13 @@ const PopUpContainer = ({
                         }}
                       >
                         <PopUpRemove
-                          style={{ fontSize: "1.3vw" }}
+                          style={{ fontSize: ".9vw" }}
                           onClick={() => handleRemove(item.id)}
                         >
                           Remove
                         </PopUpRemove>
                         <PopUpRemove
-                          style={{ fontSize: "1.3vw" }}
+                          style={{ fontSize: ".9vw" }}
                           onClick={handleReset}
                         >
                           Reset
