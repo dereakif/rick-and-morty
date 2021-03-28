@@ -25,16 +25,6 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
     autoplaySpeed: 3500,
     cssEase: "linear",
   };
-  const closePopUp = () => {
-    $(".popUp").css("display", "none");
-    $(".fav-btn").css("z-index", "1");
-    $(".char-card").css("z-index", "1");
-  };
-  $(".popUp").click((event) => {
-    $.inArray("popUp", event.target.classList) > -1 && closePopUp();
-  });
-
-  $(".closeBtn").click(() => closePopUp());
 
   const handleReset = () => {
     setFavoritesList([]);
@@ -44,8 +34,9 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
       favoritesList.map((item) => item.id !== charId && item).filter(Boolean)
     );
   };
+
   return (
-    <PopUp className="popUp">
+    <>
       <PopUpContent>
         <PopUpHeader>
           <PopUpHeaderTitle>My Favorite Characters</PopUpHeaderTitle>
@@ -84,7 +75,7 @@ const PopUpContainer = ({ favoritesList, setFavoritesList }) => {
           </Slider>
         </PopUpBody>
       </PopUpContent>
-    </PopUp>
+    </>
   );
 };
 export default PopUpContainer;

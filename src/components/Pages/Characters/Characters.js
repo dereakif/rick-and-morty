@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCharacter } from "../../../store/actions/action";
 import { Link, useHistory } from "react-router-dom";
+
 import PopUpContainer from "./PopUpContainer";
 import ScrollToTop from "../../styledComponents/Characters/Buttons/ScrollToTop";
 import CardContainer from "../../styledComponents/Characters/Card/CardContainer";
@@ -20,8 +21,22 @@ import {
   faChevronCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import $, { event } from "jquery";
+import Modal from "react-modal";
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto%",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+Modal.setAppElement("#root");
 
 const Characters = () => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
   const dispatch = useDispatch();
@@ -32,19 +47,6 @@ const Characters = () => {
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  /* $(function () {
-    $(".fav-btn").hover(
-      function () {
-        $(this).css("color", "#fa1e0e");
-      },
-      function () {
-        $(this).css("color", "#e40017");
-      }
-    );
-  });
-  $(".fav-btn").click(function () {
-    $(this).css("color", "#72A917");
-  }); */
   const handlePopUp = () => {
     $(".popUp").css("display", "unset");
     $(".fav-btn").css("z-index", "-1");
@@ -80,17 +82,39 @@ const Characters = () => {
     console.log(result, character, favoritesList);
     return result;
   };
+  //modal
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <>
-      <PopUpContainer
-        favoritesList={favoritesList}
-        setFavoritesList={setFavoritesList}
-      ></PopUpContainer>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <PopUpContainer
+          favoritesList={favoritesList}
+          setFavoritesList={setFavoritesList}
+        ></PopUpContainer>
+      </Modal>
       <ButtonContainer>
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
-        <MyFavList onClick={handlePopUp}>My Fav List</MyFavList>
+        <MyFavList onClick={openModal}>My Fav List</MyFavList>
         <PageButton onClick={handleNext}>
           Next page <FontAwesomeIcon icon={faChevronRight} />
         </PageButton>
