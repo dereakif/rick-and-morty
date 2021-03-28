@@ -5,7 +5,7 @@ const MyFavList = styled.div`
   border-radius: 1rem;
   padding: 2px 10px;
   color: white;
-  font-size: 1vw;
+  font-size: 1.2rem;
   cursor: pointer;
   :hover {
     color: black;

@@ -22,7 +22,7 @@ const Nav = styled.div`
 `;
 const NavItem = styled.div`
   color: white;
-  font-size: 1vw;
+  font-size: 1.2rem;
   font-weight: 700;
   :hover {
     color: #fa1e0e;

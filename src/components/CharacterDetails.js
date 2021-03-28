@@ -7,14 +7,13 @@ const CharacterDetails = (props) => {
   const Card = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-top: 2rem;
     margin-left: 2rem;
     border-radius: 1rem;
   `;
   const CharacterImg = styled.img`
-    width: 20vw;
+    width: 20rem;
     height: auto;
     border-radius: 1rem;
   `;

@@ -3,6 +3,6 @@ const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0 4vw;
+  padding: 0 4rem;
 `;
 export default CardContainer;
