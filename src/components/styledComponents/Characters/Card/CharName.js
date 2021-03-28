@@ -6,7 +6,7 @@ const CharName = styled.div`
   border-radius: 1rem;
   color: white;
   line-height: 1.6;
-  font-size: 24px;
+  font-size: 1vw;
   bottom: 0px;
   width: 100%;
 

@@ -22,7 +22,7 @@ const Nav = styled.div`
 `;
 const NavItem = styled.div`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.6vw;
   font-weight: 700;
   :hover {
     color: #fa1e0e;
@@ -30,21 +30,52 @@ const NavItem = styled.div`
 `;
 
 function App() {
+  const [activePage, setActivePage] = useState("");
+  const handlePage = (event) => {
+    setActivePage(event.target.innerHTML);
+    console.log(activePage);
+  };
   return (
     <Router>
       <div>
         <Nav>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <NavItem>Home</NavItem>
+          <Link to="/" onClick={handlePage} style={{ textDecoration: "none" }}>
+            <NavItem style={{ color: activePage == "Home" ? "red" : "white" }}>
+              Home
+            </NavItem>
           </Link>
-          <Link to="/characters" style={{ textDecoration: "none" }}>
-            <NavItem>Characters</NavItem>
+          <Link
+            to="/characters"
+            onClick={handlePage}
+            style={{ textDecoration: "none" }}
+          >
+            <NavItem
+              style={{ color: activePage == "Characters" ? "red" : "white" }}
+            >
+              Characters
+            </NavItem>
           </Link>
-          <Link to="/locations" style={{ textDecoration: "none" }}>
-            <NavItem>Locations</NavItem>
+          <Link
+            to="/locations"
+            onClick={handlePage}
+            style={{ textDecoration: "none" }}
+          >
+            <NavItem
+              style={{ color: activePage == "Locations" ? "red" : "white" }}
+            >
+              Locations
+            </NavItem>
           </Link>
-          <Link to="/episodes" style={{ textDecoration: "none" }}>
-            <NavItem>Episodes</NavItem>
+          <Link
+            to="/episodes"
+            onClick={handlePage}
+            style={{ textDecoration: "none" }}
+          >
+            <NavItem
+              style={{ color: activePage == "Episodes" ? "red" : "white" }}
+            >
+              Episodes
+            </NavItem>
           </Link>
         </Nav>
         <Switch>

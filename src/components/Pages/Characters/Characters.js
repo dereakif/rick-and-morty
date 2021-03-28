@@ -20,15 +20,20 @@ import {
   faChevronRight,
   faChevronCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
-import $, { event } from "jquery";
+import $, { event, nodeName } from "jquery";
 import Modal from "react-modal";
 const customStyles = {
+  overlay: {
+    backgroundColor: " rgba(0, 0, 0, 0.75)",
+  },
   content: {
     top: "50%",
     left: "50%",
     right: "auto%",
     bottom: "auto",
+    padding: "2vw",
     marginRight: "-50%",
+    border: "none",
     backgroundColor: "transparent",
     transform: "translate(-50%, -50%)",
   },
@@ -140,7 +145,6 @@ const Characters = () => {
               <FavBtn>
                 <FontAwesomeIcon
                   color={isInit(character) ? "red" : "white"}
-                  size="2x"
                   icon={faHeart}
                   className="fav-btn"
                   onClick={() => handleFav(character, event)}

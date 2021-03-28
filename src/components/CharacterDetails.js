@@ -24,7 +24,7 @@ const CharacterDetails = (props) => {
 
   const EpisodeCard = styled.p`
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.6vw;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -36,28 +36,33 @@ const CharacterDetails = (props) => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 150px;
+    width: 10vw;
+    height: 15vh;
     margin: 5px;
-    padding: 0 5px;
-    height: 100px;
+    padding: 5px 5px;
   `;
 
   const EpisodeName = styled.p`
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 1vw;
+    margin-top: 1vh;
+    line-height: 1.5;
     text-align: center;
   `;
   const EpisodeAir = styled.p`
     font-weight: 300;
-    font-size: 12px;
+    font-size: 0.7vw;
     margin-left: 10px;
+    font-style: italic;
     color: whitesmoke;
   `;
   const EpisodeTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35px;
+    height: max-content;
+    margin-top: 0;
+    line-height: 1.5;
     border-bottom: 1px solid white;
   `;
   const Container = styled.div`
@@ -65,7 +70,10 @@ const CharacterDetails = (props) => {
     display: flex;
     justify-content: center;
   `;
-  const EpisodeNumber = styled.div``;
+  const EpisodeNumber = styled.div`
+    font-weight: 600;
+    letter-spacing: 1px;
+  `;
   const [charInfo, setCharInfo] = useState({});
 
   const [charEpInfo, setCharEpInfo] = useState([]);

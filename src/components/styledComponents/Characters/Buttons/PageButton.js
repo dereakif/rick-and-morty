@@ -6,8 +6,9 @@ const PageButton = styled.button`
   color: white;
   border: 2px solid white;
   border-radius: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   line-height: 1.6;
+  cursor: pointer;
   :hover {
     color: black;
     background-color: white;

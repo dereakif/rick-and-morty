@@ -75,8 +75,7 @@ const PopUpContainer = ({
                       <ButtonContainer
                         style={{
                           fontWeight: "700",
-                          marginTop: "3vh",
-                          marginBottom: "10vh",
+                          marginTop: "0",
                         }}
                       >
                         <PopUpRemove
