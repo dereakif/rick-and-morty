@@ -58,7 +58,10 @@ const Locations = () => {
             <Link to={{ pathname: "/locationdetails", state: location }}>
               <EpisodeContent
                 key={i}
-                style={{ width: "20rem", height: "5rem" }}
+                style={{
+                  width: "20rem",
+                  height: "5rem",
+                }}
               >
                 <EpisodeTitle>
                   <EpisodeNumber>

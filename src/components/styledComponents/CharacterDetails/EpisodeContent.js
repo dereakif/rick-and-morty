@@ -10,5 +10,8 @@ const EpisodeContent = styled.div`
   height: 8rem;
   margin: 0.5rem 1rem 0.5rem 0;
   padding: 5px 5px;
+  :hover {
+    background-color: #3c3e44;
+  }
 `;
 export default EpisodeContent;

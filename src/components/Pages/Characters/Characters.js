@@ -64,9 +64,7 @@ const Characters = () => {
   };
   const handleFav = (obj) => {
     if (!favoritesList.some((item) => item.id === obj.id)) {
-      console.log(obj);
       setFavoritesList([...favoritesList, obj]);
-      console.log(favoritesList, "handfav ici");
     } else {
       setFavoritesList(
         favoritesList
@@ -78,7 +76,6 @@ const Characters = () => {
   };
   const isInit = (character) => {
     let result = favoritesList.some((item) => item.id === character.id);
-    console.log(result, character, favoritesList);
     return result;
   };
   //modal
