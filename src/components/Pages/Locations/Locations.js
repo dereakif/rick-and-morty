@@ -47,6 +47,7 @@ const Locations = () => {
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
+        <PageButton>Page: {pageNumber}/6</PageButton>
 
         <PageButton onClick={handleNext}>
           Next page <FontAwesomeIcon icon={faChevronRight} />
@@ -55,16 +56,21 @@ const Locations = () => {
       <EpisodeCard>
         {locations.length > 0 &&
           locations.map((location, i) => (
-            <Link to={{ pathname: "/locationdetails", state: location }}>
+            <Link
+              to={{ pathname: "/locationdetails", state: location }}
+              style={{ textDecoration: "none" }}
+            >
               <EpisodeContent
                 key={i}
                 style={{
-                  width: "20rem",
-                  height: "5rem",
+                  width: "25rem",
+                  height: "7rem",
                 }}
               >
-                <EpisodeTitle>
-                  <EpisodeNumber>
+                <EpisodeTitle
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <EpisodeNumber style={{ fontSize: "1rem" }}>
                     Residents: {location.residents.length}
                   </EpisodeNumber>
                   <EpisodeAir> {location.type}</EpisodeAir>

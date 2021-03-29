@@ -4,6 +4,7 @@ const EpisodeTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: max-content;
   margin-top: 0;
   line-height: 1;

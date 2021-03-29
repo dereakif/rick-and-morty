@@ -5,13 +5,15 @@ const EpisodeContent = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 8rem;
+
+  width: 15rem;
   height: 8rem;
-  margin: 0.5rem 1rem 0.5rem 0;
+  margin: 0.5rem 2rem 1rem 0;
   padding: 5px 5px;
   :hover {
-    background-color: #3c3e44;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
   }
 `;
 export default EpisodeContent;

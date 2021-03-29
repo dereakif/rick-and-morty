@@ -113,6 +113,7 @@ const Characters = () => {
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
         <MyFavList onClick={openModal}>My Fav List</MyFavList>
+        <PageButton>Page: {pageNumber} / 34</PageButton>
         <PageButton onClick={handleNext}>
           Next page <FontAwesomeIcon icon={faChevronRight} />
         </PageButton>
