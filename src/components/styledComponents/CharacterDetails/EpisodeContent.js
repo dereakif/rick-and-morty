@@ -5,7 +5,7 @@ const EpisodeContent = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-
+  letter-spacing: 1px;
   width: 15rem;
   height: 8rem;
   margin: 0.5rem 2rem 1rem 0;

@@ -47,7 +47,9 @@ const Locations = () => {
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
-        <PageButton>Page: {pageNumber}/6</PageButton>
+        <PageButton style={{ color: "black", backgroundColor: "white" }}>
+          Page: {pageNumber} / 6
+        </PageButton>
 
         <PageButton onClick={handleNext}>
           Next page <FontAwesomeIcon icon={faChevronRight} />

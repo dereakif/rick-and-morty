@@ -60,16 +60,20 @@ const PopUpContainer = ({
                   <PopUpCharInfo>
                     <>
                       <PopUpInfoRow
-                        style={{ fontWeight: "700", fontSize: "1rem" }}
+                        style={{
+                          fontWeight: "700",
+                          fontSize: "1.1rem",
+                          letterSpacing: "1px",
+                        }}
                       >
                         {item.name}
                       </PopUpInfoRow>
-                      <PopUpInfoRow style={{ fontSize: ".7rem" }}>
+                      <PopUpInfoRow style={{ fontSize: ".8rem" }}>
                         {item.species}
                         {" - "}
                         {item.status}
                       </PopUpInfoRow>
-                      <PopUpInfoRow style={{ fontSize: ".7rem" }}>
+                      <PopUpInfoRow style={{ fontSize: ".8rem" }}>
                         Origin - {item.origin.name}
                       </PopUpInfoRow>
                       <ButtonContainer
