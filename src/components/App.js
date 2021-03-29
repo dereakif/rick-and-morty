@@ -9,17 +9,17 @@ import {
 import Home from "./Pages/Home/Home";
 import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
-import Locations from "./Locations";
+import Locations from "./Pages/Locations/Locations";
 import CharacterDetails from "./Pages/CharacterDetails/CharacterDetails";
 import Nav from "./styledComponents/Nav/Nav";
 import NavItem from "./styledComponents/Nav/NavItem";
 import { useState } from "react";
+import LocationDetails from "./Pages/LocationDetails/LocationDetails";
 
 function App() {
   const [activePage, setActivePage] = useState("");
   const handlePage = (event) => {
     setActivePage(event.target.innerHTML);
-    console.log(activePage);
   };
   return (
     <Router>
@@ -80,6 +80,9 @@ function App() {
           </Route>
           <Route path="/characterdetails">
             <CharacterDetails />
+          </Route>
+          <Route path="/locationdetails">
+            <LocationDetails />
           </Route>
           <Route path="*">
             <Home />

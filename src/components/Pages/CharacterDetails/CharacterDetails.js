@@ -2,101 +2,26 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCharacter, getEpisode, getLocation } from "rickmortyapi";
 import CharName from "../../styledComponents/Characters/Card/CharName";
-import styled from "styled-components";
-const CharacterDetails = (props) => {
-  const Card = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    margin-left: 2rem;
-    border-radius: 1rem;
-  `;
-  const CharacterImg = styled.img`
-    width: 20rem;
-    height: auto;
-    border-radius: 1rem;
-  `;
-  const CharacterInfo = styled.div`
-    font-size: 24px;
-    color: white;
-  `;
-
-  const EpisodeCard = styled.p`
-    font-weight: 700;
-    font-size: 1.6vw;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  `;
-  const EpisodeContent = styled.div`
-    border: 2px solid white;
-    border-radius: 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 8rem;
-    height: 8rem;
-    margin: 0.5rem 1rem 0.5rem 0;
-    padding: 5px 5px;
-  `;
-
-  const EpisodeName = styled.p`
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: center;
-  `;
-  const EpisodeAir = styled.p`
-    font-weight: 300;
-    font-size: 0.7rem;
-    margin-left: 10px;
-    font-style: italic;
-    color: whitesmoke;
-  `;
-  const EpisodeTitle = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: max-content;
-    margin-top: 0;
-    line-height: 1;
-    border-bottom: 1px solid white;
-  `;
-  const Container = styled.div`
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  `;
-  const EpisodeNumber = styled.div`
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 1px;
-  `;
+import Card from "../../styledComponents/CharacterDetails/Card";
+import CharacterImg from "../../styledComponents/CharacterDetails/CharacterImg";
+import EpisodeCard from "../../styledComponents/CharacterDetails/EpisodeCard";
+import EpisodeContent from "../../styledComponents/CharacterDetails/EpisodeContent";
+import Container from "../../styledComponents/CharacterDetails/Container";
+import EpisodeTitle from "../../styledComponents/CharacterDetails/EpisodeTitle";
+import EpisodeNumber from "../../styledComponents/CharacterDetails/EpisodeNumber";
+import EpisodeAir from "../../styledComponents/CharacterDetails/EpisodeAir";
+import EpisodeName from "../../styledComponents/CharacterDetails/EpisodeName";
+const CharacterDetails = () => {
   const [charInfo, setCharInfo] = useState({});
-
   const [charEpInfo, setCharEpInfo] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
-    //console.log(location.state, "akiif");
     setCharInfo(location.state);
 
-    console.log("if ici");
     const episodes = getEpisode(
       location.state.episode.map((item) => item.replace(/\D/g, ""))
     );
-    console.log(episodes, "promise oncesi");
-    /* episodes.then((value) => setCharEpInfo(value));
-      console.log(charEpInfo.length > 0 && charEpInfo); */
-    // Array.isArray(episodes) ? episodes.then((value) => setCharEpInfo(value)):
-    //episodes.then((value) => setCharEpInfo(value))
-    console.log(episodes.constructor === Object);
-
-    //Array.isArray(episodes)) {
     episodes.then(async (value) =>
       value.constructor === Object
         ? setCharEpInfo([...charEpInfo, value])

@@ -20,7 +20,6 @@ import {
   faChevronRight,
   faChevronCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
-import $, { event, nodeName } from "jquery";
 import Modal from "react-modal";
 const customStyles = {
   overlay: {
@@ -42,22 +41,16 @@ Modal.setAppElement("#root");
 
 const Characters = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
-    console.log(favoritesList, "useefetct");
-  }, [pageNumber, favoritesList.length]);
+  }, [pageNumber]);
 
   const characters = useSelector((state) => state.characterReducer.data);
 
-  /*   const handlePopUp = () => {
-    $(".popUp").css("display", "unset");
-    $(".fav-btn").css("z-index", "-1");
-    $(".char-card").css("z-index", "-1");
-  }; */
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
   };
@@ -147,7 +140,7 @@ const Characters = () => {
                   color={isInit(character) ? "red" : "white"}
                   icon={faHeart}
                   className="fav-btn"
-                  onClick={() => handleFav(character, event)}
+                  onClick={() => handleFav(character)}
                 />
               </FavBtn>
             </Card>
