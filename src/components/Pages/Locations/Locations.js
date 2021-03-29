@@ -24,17 +24,15 @@ const Locations = () => {
 
   useEffect(() => {
     dispatch(getLocation(pageNumber));
-  }, [pageNumber]);
+  }, [pageNumber, dispatch]);
   const locations = useSelector((state) => state.locationReducer.data);
-  console.log(locations);
+
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
-    console.log(pageNumber);
   };
 
   const handleNext = () => {
     pageNumber >= 6 ? setPageNumber(6) : setPageNumber(pageNumber + 1);
-    console.log(pageNumber);
   };
 
   const scrollToTop = () => {
@@ -59,11 +57,11 @@ const Locations = () => {
         {locations.length > 0 &&
           locations.map((location, i) => (
             <Link
+              key={i}
               to={{ pathname: "/locationdetails", state: location }}
               style={{ textDecoration: "none" }}
             >
               <EpisodeContent
-                key={i}
                 style={{
                   width: "25rem",
                   height: "7rem",

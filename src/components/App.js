@@ -1,11 +1,5 @@
 import "./../App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Characters from "./Pages/Characters/Characters";
 import Episodes from "./Episodes";
@@ -28,7 +22,7 @@ function App() {
           <Link to="/" onClick={handlePage} style={{ textDecoration: "none" }}>
             <NavItem
               style={{
-                color: activePage == "Home" ? "red" : "white",
+                color: activePage === "Home" ? "red" : "white",
               }}
             >
               Home
@@ -40,7 +34,7 @@ function App() {
             style={{ textDecoration: "none" }}
           >
             <NavItem
-              style={{ color: activePage == "Characters" ? "red" : "white" }}
+              style={{ color: activePage === "Characters" ? "red" : "white" }}
             >
               Characters
             </NavItem>
@@ -51,7 +45,7 @@ function App() {
             style={{ textDecoration: "none" }}
           >
             <NavItem
-              style={{ color: activePage == "Locations" ? "red" : "white" }}
+              style={{ color: activePage === "Locations" ? "red" : "white" }}
             >
               Locations
             </NavItem>
@@ -62,7 +56,7 @@ function App() {
             style={{ textDecoration: "none" }}
           >
             <NavItem
-              style={{ color: activePage == "Episodes" ? "red" : "white" }}
+              style={{ color: activePage === "Episodes" ? "red" : "white" }}
             >
               Episodes
             </NavItem>

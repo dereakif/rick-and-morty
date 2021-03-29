@@ -7,19 +7,12 @@ import PopUpImg from "../../styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "../../styledComponents/PopUp/PopUpCharInfo";
 import PopUpInfoRow from "../../styledComponents/PopUp/PopUpInfoRow";
 import PopUpRemove from "../../styledComponents/Characters/Buttons/PopUpRemove";
-import $ from "jquery";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import PopUp from "../../styledComponents/PopUp/PopUp";
 import ButtonContainer from "../../styledComponents/Characters/Buttons/ButtonContainer";
 
-const PopUpContainer = ({
-  favoritesList,
-  setFavoritesList,
-  modalIsOpen,
-  setIsOpen,
-}) => {
+const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
   const slickSettings = {
     dots: true,
     infinite: true,

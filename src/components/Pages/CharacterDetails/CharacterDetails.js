@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getCharacter, getEpisode, getLocation } from "rickmortyapi";
+import { getEpisode } from "rickmortyapi";
 import CharName from "../../styledComponents/Characters/Card/CharName";
 import Card from "../../styledComponents/CharacterDetails/Card";
 import CharacterImg from "../../styledComponents/CharacterDetails/CharacterImg";
@@ -27,7 +27,7 @@ const CharacterDetails = () => {
         ? setCharEpInfo([...charEpInfo, value])
         : setCharEpInfo(value)
     );
-  }, []);
+  }, [charEpInfo, location.state]);
 
   return (
     <Container>

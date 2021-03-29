@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCharacter } from "../../../store/actions/action";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import PopUpContainer from "./PopUpContainer";
 import ScrollToTop from "../../styledComponents/Characters/Buttons/ScrollToTop";
@@ -47,7 +47,7 @@ const Characters = () => {
 
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
-  }, [pageNumber]);
+  }, [pageNumber, dispatch]);
 
   const characters = useSelector((state) => state.characterReducer.data);
 
