@@ -8,8 +8,8 @@
 
 ## General info
 
-Explore The Characters and Locations in Rick and Morty Tv Series.
-Add or remove your favorite characters to a favorite list.
+Explore The Characters and Locations in Rick and Morty Tv Series.**
+Add or remove your favorite characters to a favorite list.**
 See the residents of specific locations.
 
 ## Technologies
