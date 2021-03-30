@@ -24,9 +24,6 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
     cssEase: "linear",
   };
 
-  const handleReset = () => {
-    setFavoritesList([]);
-  };
   const handleRemove = (char) => {
     setFavoritesList(
       favoritesList.map((item) => item.id !== char.id && item).filter(Boolean)

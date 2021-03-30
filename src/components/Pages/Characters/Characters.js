@@ -42,20 +42,12 @@ const Characters = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
-  //const [cardLoading, setCardLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
   }, [pageNumber, dispatch]);
-  /*   useEffect(() => {
-    setTimeout(() => {
-      setCardLoading(false);
-    }, 3000);
-  }, []);
- */
   const characters = useSelector((state) => state.characterReducer.data);
-  const isLoading = useSelector((state) => state.characterReducer.isLoading);
 
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
