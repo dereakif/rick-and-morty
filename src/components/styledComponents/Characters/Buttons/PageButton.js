@@ -9,6 +9,7 @@ const PageButton = styled.button`
   font-size: 1.2rem;
   line-height: 1.6;
   cursor: pointer;
+  transition: all 0.3s ease;
   :hover {
     color: black;
     background-color: white;

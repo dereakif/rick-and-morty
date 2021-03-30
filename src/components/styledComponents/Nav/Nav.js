@@ -4,6 +4,10 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
-  border-bottom: 2px solid white;
+
+  background-color: #3c415c;
+  box-shadow: 0px 11px 20px -1px rgba(0, 0, 0, 0.68);
+  -webkit-box-shadow: 0px 11px 20px -1px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 0px 11px 20px -1px rgba(0, 0, 0, 0.68);
 `;
 export default Nav;

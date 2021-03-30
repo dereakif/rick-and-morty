@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const EpisodeContent = styled.div`
-  border: 2px solid white;
+  border: 2px solid #903749;
   border-radius: 1rem;
   color: white;
   display: flex;

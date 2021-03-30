@@ -27,7 +27,7 @@ const CharacterDetails = () => {
         ? setCharEpInfo([...charEpInfo, value])
         : setCharEpInfo(value)
     );
-  }, [charEpInfo, location.state]);
+  }, [location.state]);
 
   return (
     <Container>

@@ -19,9 +19,9 @@ const LocationDetails = () => {
         ? setResidentsInfo([...residentsInfo, value])
         : setResidentsInfo(value)
     );
-  }, [location, residentsInfo]);
+  }, [location]);
   return (
-    <CardContainer>
+    <CardContainer style={{ marginTop: "4rem" }}>
       {residentsInfo.length > 0 &&
         residentsInfo.map((character, i) => (
           <Card key={i} className="char-card">

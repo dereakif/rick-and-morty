@@ -45,7 +45,13 @@ const Locations = () => {
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
-        <PageButton style={{ color: "black", backgroundColor: "white" }}>
+        <PageButton
+          style={{
+            color: "white",
+            backgroundColor: "#53354a",
+            border: "none",
+          }}
+        >
           Page: {pageNumber} / 6
         </PageButton>
 
@@ -64,7 +70,7 @@ const Locations = () => {
               <EpisodeContent
                 style={{
                   width: "25rem",
-                  height: "7rem",
+                  height: "8rem",
                 }}
               >
                 <EpisodeTitle

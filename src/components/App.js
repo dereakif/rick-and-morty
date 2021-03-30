@@ -40,7 +40,7 @@ function App() {
             >
               <NavItem
                 style={{
-                  color: activePage === "Home" ? "red" : "white",
+                  color: activePage === "Home" ? "#e84545" : "white",
                 }}
               >
                 Home
@@ -52,7 +52,9 @@ function App() {
               style={{ textDecoration: "none" }}
             >
               <NavItem
-                style={{ color: activePage === "Characters" ? "red" : "white" }}
+                style={{
+                  color: activePage === "Characters" ? "#e84545" : "white",
+                }}
               >
                 Characters
               </NavItem>
@@ -63,7 +65,9 @@ function App() {
               style={{ textDecoration: "none" }}
             >
               <NavItem
-                style={{ color: activePage === "Locations" ? "red" : "white" }}
+                style={{
+                  color: activePage === "Locations" ? "#e84545" : "white",
+                }}
               >
                 Locations
               </NavItem>

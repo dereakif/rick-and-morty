@@ -74,6 +74,9 @@ const Characters = () => {
       favoritesList.length === 0 && setFavoritesList([]);
     }
   };
+  const handleReset = () => {
+    setFavoritesList([]);
+  };
   const isInit = (character) => {
     let result = favoritesList.some((item) => item.id === character.id);
     return result;
@@ -112,8 +115,23 @@ const Characters = () => {
         <PageButton onClick={handlePrevious}>
           <FontAwesomeIcon icon={faChevronLeft} /> Previous page
         </PageButton>
-        <MyFavList onClick={openModal}>My Fav List</MyFavList>
-        <PageButton style={{ color: "black", backgroundColor: "white" }}>
+        <MyFavList onClick={openModal}>
+          My Fav List{" "}
+          <FontAwesomeIcon
+            color={favoritesList.length > 0 ? "#e84545" : "white"}
+            style={{ transition: "all 0.5s ease" }}
+            icon={faHeart}
+            className="fav-btn"
+          />
+        </MyFavList>
+        <MyFavList onClick={handleReset}>Reset</MyFavList>
+        <PageButton
+          style={{
+            color: "white",
+            backgroundColor: "#53354a",
+            border: "none",
+          }}
+        >
           Page: {pageNumber} / 34
         </PageButton>
         <PageButton onClick={handleNext}>
@@ -137,7 +155,8 @@ const Characters = () => {
               <CharName className="quick-view">{character.name}</CharName>
               <FavBtn>
                 <FontAwesomeIcon
-                  color={isInit(character) ? "red" : "white"}
+                  color={isInit(character) ? "#e84545" : "white"}
+                  style={{ transition: "all 0.5s ease" }}
                   icon={faHeart}
                   className="fav-btn"
                   onClick={() => handleFav(character)}

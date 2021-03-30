@@ -8,6 +8,6 @@ const EpisodeTitle = styled.div`
   height: max-content;
   margin-top: 0;
   line-height: 1;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #e84545;
 `;
 export default EpisodeTitle;
