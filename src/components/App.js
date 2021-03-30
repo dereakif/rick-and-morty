@@ -2,7 +2,6 @@ import "./../App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Characters from "./Pages/Characters/Characters";
-import Episodes from "./Episodes";
 import Locations from "./Pages/Locations/Locations";
 import CharacterDetails from "./Pages/CharacterDetails/CharacterDetails";
 import Nav from "./styledComponents/Nav/Nav";
@@ -80,9 +79,6 @@ function App() {
           </Route>
           <Route path="/locations">
             <Locations />
-          </Route>
-          <Route path="/episode">
-            <Episodes />
           </Route>
           <Route path="/characterdetails">
             <CharacterDetails />
