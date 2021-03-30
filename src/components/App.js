@@ -9,7 +9,19 @@ import Nav from "./styledComponents/Nav/Nav";
 import NavItem from "./styledComponents/Nav/NavItem";
 import { useState } from "react";
 import LocationDetails from "./Pages/LocationDetails/LocationDetails";
+import navLogo from "../assets/nav-logo.png";
+import styled from "styled-components";
 
+const NavLogo = styled.img`
+  height: auto;
+  width: 4rem;
+  padding: 5px 0;
+`;
+const NavItemContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 1px;
+`;
 function App() {
   const [activePage, setActivePage] = useState("");
   const handlePage = (event) => {
@@ -19,48 +31,44 @@ function App() {
     <Router>
       <div>
         <Nav>
-          <Link to="/" onClick={handlePage} style={{ textDecoration: "none" }}>
-            <NavItem
-              style={{
-                color: activePage === "Home" ? "red" : "white",
-              }}
+          <NavLogo src={navLogo} alt="logo"></NavLogo>
+          <NavItemContainer>
+            <Link
+              to="/"
+              onClick={handlePage}
+              style={{ textDecoration: "none" }}
             >
-              Home
-            </NavItem>
-          </Link>
-          <Link
-            to="/characters"
-            onClick={handlePage}
-            style={{ textDecoration: "none" }}
-          >
-            <NavItem
-              style={{ color: activePage === "Characters" ? "red" : "white" }}
+              <NavItem
+                style={{
+                  color: activePage === "Home" ? "red" : "white",
+                }}
+              >
+                Home
+              </NavItem>
+            </Link>
+            <Link
+              to="/characters"
+              onClick={handlePage}
+              style={{ textDecoration: "none" }}
             >
-              Characters
-            </NavItem>
-          </Link>
-          <Link
-            to="/locations"
-            onClick={handlePage}
-            style={{ textDecoration: "none" }}
-          >
-            <NavItem
-              style={{ color: activePage === "Locations" ? "red" : "white" }}
+              <NavItem
+                style={{ color: activePage === "Characters" ? "red" : "white" }}
+              >
+                Characters
+              </NavItem>
+            </Link>
+            <Link
+              to="/locations"
+              onClick={handlePage}
+              style={{ textDecoration: "none" }}
             >
-              Locations
-            </NavItem>
-          </Link>
-          <Link
-            to="/episodes"
-            onClick={handlePage}
-            style={{ textDecoration: "none" }}
-          >
-            <NavItem
-              style={{ color: activePage === "Episodes" ? "red" : "white" }}
-            >
-              Episodes
-            </NavItem>
-          </Link>
+              <NavItem
+                style={{ color: activePage === "Locations" ? "red" : "white" }}
+              >
+                Locations
+              </NavItem>
+            </Link>
+          </NavItemContainer>
         </Nav>
         <Switch>
           <Route path="/characters">
