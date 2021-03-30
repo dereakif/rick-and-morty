@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const PopUpHeader = styled.div`
   width: 100%;
-  line-height: 2;
+  line-height: 2.3;
   margin-bottom: 30px;
   position: relative;
   display: flex;

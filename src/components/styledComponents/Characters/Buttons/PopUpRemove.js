@@ -7,7 +7,7 @@ const PopUpRemove = styled.div`
   font-weight: 800;
   line-height: 1.6rem;
   color: black;
-  margin-top: 3rem;
+  margin-top: 2rem;
   cursor: pointer;
   width: 50%;
   :hover {

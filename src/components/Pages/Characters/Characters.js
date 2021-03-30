@@ -155,7 +155,7 @@ const Characters = () => {
               <CharName className="quick-view">{character.name}</CharName>
               <FavBtn>
                 <FontAwesomeIcon
-                  color={isInit(character) ? "#e84545" : "#903749"}
+                  color={isInit(character) ? "#e84545" : "#f9f3f3"}
                   style={{ transition: "all 0.5s ease" }}
                   icon={faHeart}
                   className="fav-btn"
