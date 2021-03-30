@@ -75,10 +75,7 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
                           marginTop: "0",
                         }}
                       >
-                        <PopUpRemove
-                          style={{ fontSize: ".9rem" }}
-                          onClick={() => handleRemove(item.id)}
-                        >
+                        <PopUpRemove onClick={() => handleRemove(item.id)}>
                           Remove
                         </PopUpRemove>
                       </ButtonContainer>

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const PopUpCloseBtn = styled.div`
-  margin-top: 0;
-  margin-right: 5px;
-  display: flex;
-  align-self: flex-start;
+  font-size: 2rem;
+  position: absolute;
+  right: 1%;
+  top: -40%;
   cursor: pointer;
 `;
 export default PopUpCloseBtn;
