@@ -1,4 +1,6 @@
-# Weather Widget
+# Rick And Morty
+
+## [Live demo](https://rick-and-morty-gules.vercel.app/)
 
 ## Table of contents
 
@@ -24,5 +26,3 @@ To start project run;
 npm install
 npm run start
 ```
-
-## [Live demo](https://rick-and-morty-gules.vercel.app/)
