@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCharacter } from "../../../store/actions/action";
 import { Link } from "react-router-dom";
-
 import PopUpContainer from "./PopUpContainer";
 import ScrollToTop from "../../styledComponents/Characters/Buttons/ScrollToTop";
 import CardContainer from "../../styledComponents/Characters/Card/CardContainer";
@@ -21,6 +20,7 @@ import {
   faChevronCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
+import Image, { Shimmer } from "react-shimmer";
 const customStyles = {
   overlay: {
     backgroundColor: " rgba(0, 0, 0, 0.75)",
@@ -43,13 +43,20 @@ const Characters = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [favoritesList, setFavoritesList] = useState([]);
+  //const [cardLoading, setCardLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCharacter(pageNumber));
   }, [pageNumber, dispatch]);
-
+  /*   useEffect(() => {
+    setTimeout(() => {
+      setCardLoading(false);
+    }, 3000);
+  }, []);
+ */
   const characters = useSelector((state) => state.characterReducer.data);
+  const isLoading = useSelector((state) => state.characterReducer.isLoading);
 
   const handlePrevious = () => {
     pageNumber <= 1 ? setPageNumber(1) : setPageNumber(pageNumber - 1);
@@ -138,6 +145,7 @@ const Characters = () => {
           Next page <FontAwesomeIcon icon={faChevronRight} />
         </PageButton>
       </ButtonContainer>
+
       <CardContainer>
         {characters.length > 0 &&
           characters.map((character, i) => (

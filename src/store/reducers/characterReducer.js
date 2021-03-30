@@ -1,6 +1,6 @@
 const initialState = {
   data: [],
-  isLoading: false,
+  isLoading: true,
 };
 export const characterReducer = (state = initialState, action) => {
   switch (action.type) {
