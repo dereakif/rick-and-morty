@@ -21,16 +21,22 @@ const NavItemContainer = styled.div`
   justify-content: space-between;
   letter-spacing: 1px;
 `;
+
 function App() {
   const [activePage, setActivePage] = useState("");
   const handlePage = (event) => {
     setActivePage(event.target.innerHTML);
   };
+  const clickHandler = () => {
+    setActivePage("Home");
+  };
   return (
     <Router>
       <div>
         <Nav>
-          <NavLogo src={navLogo} alt="logo"></NavLogo>
+          <Link onClick={clickHandler} to="/">
+            <NavLogo src={navLogo} alt="logo"></NavLogo>
+          </Link>
           <NavItemContainer>
             <Link
               to="/"
