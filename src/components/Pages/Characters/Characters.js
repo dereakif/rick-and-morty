@@ -118,7 +118,7 @@ const Characters = () => {
         <MyFavList onClick={openModal}>
           My Fav List{" "}
           <FontAwesomeIcon
-            color={favoritesList.length > 0 ? "#e84545" : "white"}
+            color={favoritesList.length > 0 ? "#e84545" : "#903749"}
             style={{ transition: "all 0.5s ease" }}
             icon={faHeart}
             className="fav-btn"

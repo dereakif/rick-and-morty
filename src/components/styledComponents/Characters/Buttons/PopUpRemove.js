@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 const PopUpRemove = styled.div`
-  border: 1px solid white;
+  border: 2px solid black;
   border-radius: 1rem;
-  color: whitesmoke;
+  color: black;
   margin: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   :hover {
-    color: red;
-    background-color: white;
+    color: #e84545;
   }
 `;
 export default PopUpRemove;

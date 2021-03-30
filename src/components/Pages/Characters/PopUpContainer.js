@@ -81,12 +81,6 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
                         >
                           Remove
                         </PopUpRemove>
-                        <PopUpRemove
-                          style={{ fontSize: ".9rem" }}
-                          onClick={handleReset}
-                        >
-                          Reset
-                        </PopUpRemove>
                       </ButtonContainer>
                     </>
                   </PopUpCharInfo>
