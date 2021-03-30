@@ -25,4 +25,4 @@ npm install
 npm run start
 ```
 
-## [Live demo](https://laughing-ramanujan-cb9a78.netlify.app/)
+## [Live demo](https://rick-and-morty-gules.vercel.app/)
