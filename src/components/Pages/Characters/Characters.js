@@ -20,7 +20,6 @@ import {
   faChevronCircleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
-import Image, { Shimmer } from "react-shimmer";
 const customStyles = {
   overlay: {
     backgroundColor: " rgba(0, 0, 0, 0.75)",

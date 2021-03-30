@@ -6,11 +6,11 @@ import PopUpBody from "../../styledComponents/PopUp/PopUpBody";
 import PopUpImg from "../../styledComponents/PopUp/PopUpImg";
 import PopUpCharInfo from "../../styledComponents/PopUp/PopUpCharInfo";
 import PopUpInfoRow from "../../styledComponents/PopUp/PopUpInfoRow";
+import ButtonContainer from "../../styledComponents/Characters/Buttons/ButtonContainer";
 import PopUpRemove from "../../styledComponents/Characters/Buttons/PopUpRemove";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ButtonContainer from "../../styledComponents/Characters/Buttons/ButtonContainer";
 
 const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
   const slickSettings = {
@@ -21,16 +21,18 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3500,
-    fade: true,
     cssEase: "linear",
   };
 
   const handleReset = () => {
     setFavoritesList([]);
   };
-  const handleRemove = (charId) => {
+  const handleRemove = (char) => {
     setFavoritesList(
-      favoritesList.map((item) => item.id !== charId && item).filter(Boolean)
+      favoritesList.map((item) => item.id !== char.id && item).filter(Boolean)
+    );
+    console.log(
+      favoritesList.map((item) => item.id !== char.id && item).filter(Boolean)
     );
   };
   function closeModal() {
@@ -47,8 +49,8 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
         <PopUpBody>
           <Slider {...slickSettings}>
             {favoritesList &&
-              favoritesList.map((item) => (
-                <div>
+              favoritesList.map((item, i) => (
+                <div key={i}>
                   <PopUpImg src={item.image} />
                   <PopUpCharInfo>
                     <>
@@ -69,13 +71,14 @@ const PopUpContainer = ({ favoritesList, setFavoritesList, setIsOpen }) => {
                       <PopUpInfoRow style={{ fontSize: ".8rem" }}>
                         Origin - {item.origin.name}
                       </PopUpInfoRow>
+
                       <ButtonContainer
                         style={{
                           fontWeight: "700",
                           marginTop: "0",
                         }}
                       >
-                        <PopUpRemove onClick={() => handleRemove(item.id)}>
+                        <PopUpRemove onClick={() => handleRemove(item)}>
                           Remove
                         </PopUpRemove>
                       </ButtonContainer>
